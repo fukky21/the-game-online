@@ -1,4 +1,4 @@
-# the-game-online
+# ざ・げーむ おんらいん
 大人気ボードゲーム「ザ・ゲーム」をオンラインで遊べるように開発した。  
 ゲーム部分は`enchant.js`、通信部分は`Node.js` + `Express.js` + `Socket.IO`を使用した。
 
