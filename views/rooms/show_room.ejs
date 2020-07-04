@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>ざ・げーむ おんらいん</title>
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="roomId" content="<%= roomId %>">
+    <meta name="myName" content="<%= myName %>">
+  </head>
+  <body>
+    <div class="titleSpace">
+      <img class="titleLogo" src="/images/title_logo.png">
+      <h1>ざ・げーむ おんらいん</h1>
+      <h2>ルームID: <%= roomId %></h2>
+    </div>
+    <div class="alert alert-danger" role="alert" id="alertMsg">
+    </div>
+    <div class="participantSpace" id="participantSpace">
+      <h3>参加者</h3>
+      <ol class="playerList" id="playerList">
+      </ol>
+    </div>
+    <% if(isHost) { %>
+      <div class="btnSpace">
+        <div>
+          <a class="box btn btn-outline-dark btn-lg btn-block" href="/index" role="button">タイトル画面に戻る</a>
+        </div>
+        <div>
+          <button type="button" class="btn btn-success btn-lg btn-block" id="startGameButton">Game Start!</button>
+        </div>
+      </div>
+    <% } else { %>
+      <div class="alert alert-info" role="alert">
+        ホストが開始するのを待っています...
+      </div>
+      <div class="btnSpace">
+        <div>
+          <a class="box btn btn-outline-dark btn-lg btn-block" href="/index" role="button">タイトル画面に戻る</a>
+        </div>
+      </div>
+    <% } %> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      $(function() {
+        var roomId = $("meta[name=roomId]").attr('content');
+        var myName = $("meta[name=myName]").attr('content');
+        var room = io.connect('https://the-game-online.herokuapp.com/room');
+        //var room = io.connect('http://localhost:5000/room'); // local test用
+
+        room.emit('socket_connect_request_from_client', {
+          roomId: roomId,
+          myName: myName
+        });
+
+        room.on('disconnect', function() {
+          $('#alertMsg').text("サーバーと通信ができません。");
+          $('#alertMsg').show();
+        });
+
+        room.on('player_names_info_from_server', function(data) {
+          $('#alertMsg').hide(); // 参加人数が足りていないmsgを消す
+          $('#playerList').empty(); // 一旦空にしてから再構築する
+          $.each(data,function(index, val){
+            if(index == 0) {
+              $('#playerList').append($('<li>').text(`${val} (ホスト)`));
+            } else {
+              $('#playerList').append($('<li>').text(val));
+            }
+          });
+        });
+
+        room.on('disconnect_host_info_from_server', function(data) {
+          $('#alertMsg').text("ホストがルームを抜けました。タイトル画面へ戻ります。");
+          $('#alertMsg').show();
+          setTimeout(function(){
+            window.location.href = "/";
+          }, 3000);
+        });
+
+        $('#startGameButton').on('click', function() {
+          room.emit('start_game_request_from_client');
+        });
+
+        room.on('start_game_response_from_server', function(data) {
+          if(data.startFlag) {
+            window.location.href = `/gaming/${roomId}/${myName}`;
+          } else {
+            $('#alertMsg').text(data.alertMsg);
+            $('#alertMsg').show();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+<style>
+  body {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+  }
+  .titleSpace {
+    position: relative;
+    width: 100%;
+    height: 15%;
+  }
+  .titleSpace img {
+    width: 200px;
+    margin-left: 60%;
+  }
+  .titleSpace h1 {
+    position: absolute;
+    font-size: 40px;
+    font-family: 'ヒラギノ角ゴ Std W8', sans-serif;
+    text-align: center;
+    width: 500px;
+    top: 100px;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .titleSpace h2 {
+    position: absolute;
+    font-size: 30px;
+    font-family: 'ヒラギノ角ゴ Std W8', sans-serif;
+    text-align: center;
+    width: 300px;
+    top: 170px;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .alert-danger {
+    display: none;
+    margin-top: 40px;
+    margin-right: 20vw;
+    margin-left: 20vw;
+  }
+  .participantSpace {
+    margin-top: 60px;
+  }
+  .participantSpace h3 {
+    font-size: 25px;
+    font-family: sans-serif;
+    margin-left: 20vw;
+  }
+  .participantSpace .playerList {
+    font-size: 20px;
+    font-family: sans-serif;
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
+  ol {
+    color: black;
+    border-top: solid black 1px; /*上のボーダー*/
+    border-bottom: solid black 1px; /*下のボーダー*/
+    padding: 0.5em 0 0.5em 1.5em;
+  }
+  ol li {
+    line-height: 1.5;
+    padding: 0.2em 0;
+  }
+  .btnSpace {
+    margin-top: 70px;
+    display: flex;
+    /*margin-top: 70px;*/
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
+  .btnSpace div {
+    width: 60vw;
+    margin: 10px;
+  }
+  .alert-info {
+    margin-top: 70px;
+    margin-right: 20vw;
+    margin-left: 20vw;
+  }
+</style>

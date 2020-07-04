@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>ざ・げーむ おんらいん</title>
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="titleSpace">
+      <img class="titleLogo" src="/images/title_logo.png">
+      <h1>ざ・げーむ おんらいん</h1>
+      <h2>操作説明</h2>
+    </div>
+    <div class="imgSpace">
+      <img class="manualImage" src="/images/manual_image.png">
+    </div>
+    <div class="description">
+      <h3>カードの出し方</h3>
+      <div>
+        ドラッグ&ドロップすることで場にカードを出すことができます。</br>
+        出したい場所の近くまでカードを持っていって離せば、位置は自動的に補正されます。
+      </div>
+      <h3>カードをドローする</h3>
+      <div>
+        「ターン終了」ボタンを押すと、自動的に山札から出した枚数分だけカードがドローされ、次の人に手番が回ります。</br>
+        手札はドローと同時に昇順で並び替えられます。</br>
+        「ターン終了」ボタンは最低2枚手札を出さないと有効になりません。<font color="red">※「最低1枚」から変更しました(2020/05/18 23:50)</font>
+      </div>
+      <h3>仲間が出したカードを確認する</h3>
+      <div>
+        仲間のプレイヤーがどこに何のカードを出したのかは、画面左上にある吹き出し内に表示されます。
+      </div>
+      <h3>アピールいちごパフェについて</h3>
+      <div>
+        「次の自分の手番で、どうしてもソコにカードを出したい！！」と思う場面があるでしょう。</br>
+        そのときは「アピールいちごパフェ」を使って仲間にアピールすることができます。</br>
+        カードと同様、ドラッグ&ドロップで場に出すことができます。</br>
+        場に出されたパフェ(半透明)をクリックすると、消すことができます(出した人以外でも消せます)。</br>
+        すでに場にパフェがあるときに自分のパフェを出すと、自分の名前のパフェに上書きされます。
+      </div>
+    </div>
+    <div class="btnSpace">
+      <a class="box btn btn-outline-dark btn-lg btn-block" href="/index" role="button">タイトル画面に戻る</a>
+    </div>
+  </body>
+</html>
+<style>
+  body {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+  }
+  .titleSpace {
+    position: relative;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 50px;
+  }
+  .titleSpace img {
+    width: 200px;
+    margin-left: 60%;
+  }
+  .titleSpace h1 {
+    position: absolute;
+    font-size: 40px;
+    font-family: 'ヒラギノ角ゴ Std W8', sans-serif;
+    text-align: center;
+    width: 500px;
+    top: 100px;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .titleSpace h2 {
+    position: absolute;
+    font-size: 30px;
+    font-family: 'ヒラギノ角ゴ Std W8', sans-serif;
+    text-align: center;
+    width: 500px;
+    top: 170px;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .imgSpace {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  .imgSpace img {
+    border: 3px solid #000000;
+    width: 50vw;
+  }
+  .description {
+    margin-top: 50px;
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+  .description h3 {
+    font-size: 25px;
+    font-family: 'ヒラギノ角ゴ Std W8', sans-serif;
+  }
+  .description div {
+    font-size: 15px;
+    font-family: 'sans-serif';
+    margin-bottom: 40px;
+  }
+  .btnSpace {
+    margin-top: 60px;
+    margin-left: 30vw;
+    margin-right: 30vw;
+  }
+</style>

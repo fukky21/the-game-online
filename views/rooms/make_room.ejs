@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>ざ・げーむ おんらいん</title>
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="titleSpace">
+      <img class="titleLogo" src="/images/title_logo.png">
+      <h1>ざ・げーむ おんらいん</h1>
+      <h2>ルームを作る</h2>
+    </div>
+    <form class="form" id="makeRoomForm" method="POST" action="/show_room">
+      <label>ゲーム中に使用する名前を入力してください</label>
+      <input class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="名前を入力してください">
+      <% if(typeof alertMsg != 'undefined') { %>
+        <small id="nameHelp" class="form-text text-muted"><font color="red"><%= alertMsg %></font></small>
+      <% } %>
+      </div>
+      <input type="hidden" id="action" name="action" value="makeRoom">
+      <div class="btnSpace">
+        <div>
+          <a class="btn btn-outline-dark btn-lg btn-block" href="/index" role="button">タイトル画面に戻る</a>
+        </div>
+        <div>
+          <input type="submit" class="btn btn-success btn-lg btn-block" value="ルームを作る">
+        </div>
+      </div>
+    </form>
+    </div>
+  </body>
+</html>
+<style>
+  body {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+  }
+  .titleSpace {
+    position: relative;
+    width: 100%;
+    height: 15%;
+  }
+  .titleSpace img {
+    width: 200px;
+    margin-left: 60%;
+  }
+  .titleSpace h1 {
+    position: absolute;
+    font-size: 40px;
+    font-family: 'ヒラギノ角ゴ Std W8', sans-serif;
+    text-align: center;
+    width: 500px;
+    top: 100px;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .titleSpace h2 {
+    position: absolute;
+    font-size: 30px;
+    font-family: 'ヒラギノ角ゴ Std W8', sans-serif;
+    text-align: center;
+    width: 250px;
+    top: 170px;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .form {
+    margin-top: 70px;
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+  .form .btnSpace {
+    margin-top: 70px;
+    display: flex;
+  }
+  .form .btnSpace div {
+    width: 40vw;
+    margin: 10px;
+  }
+</style>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>ざ・げーむ おんらいん</title>
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="titleSpace">
+      <img class="titleLogo" src="/images/title_logo.png">
+      <h1>ざ・げーむ おんらいん</h1>
+      <h2>このゲームについて</h2>
+    </div>
+    <div class="description">
+      <h3>ざ・げーむ おんらいん とは？</h3>
+      <div>
+        「ざ・げーむ おんらいん」は、大人気ボードゲーム「ザ・ゲーム」を元にして作ったゲームです。</br>
+        普段は私の友人たちとザ・ゲームを楽しくプレイしているのですが、昨年より流行した新型コロナウイルスの影響により、なかなか集まれなくなってしまいました。</br>
+        そこで、オンラインでもザ・ゲームを楽しめないかと考え、このゲームを作りました。
+      </div>
+      <h3>ザ・ゲーム とは？</h3>
+      <div>
+        「ザ・ゲーム」は、仲間と協力してゲームクリアを目指すボードゲームです。</br>
+        2〜98までの98枚のカードを全て場に出すことができればクリアとなります。</br>
+        詳しいルールについては <a href="https://boku-boardgame.net/the-game" target="_blank">こちらのサイト</a> にまとめてくださっているのでご覧ください。
+      </div>
+      <h3>公式とこのゲームの違い</h3>
+      <div>
+        基本的に「ザ・ゲーム」と同じルールですが、いくつか違う仕様があります。</br>
+        <ul>
+          <li>1人ではプレイできません。2〜8人で遊ぶことができます。</li>
+          <li>手札の枚数は参加人数に関わらず6枚で固定です。</li>
+          <li>拡張ルールは実装していません。</li>
+          <li>全てのカードが場に出ないとクリアとはなりません。</li>
+        </ul>
+      </div>
+      <h3>注意事項</h3>
+      <div>
+        <ol>
+          <li>このゲームでは仲間とのコミュニケーションが必須ですが、このゲームにビデオ通話機能やチャット機能は付いていません。別のアプリでコミュニケーションを取りながらゲームを楽しんでください。</li>
+          <li>このゲームをプレイするには最低 1200 x 700px の画面サイズが必要です。したがってスマートフォンではプレイすることができません。</li>
+          <li>ルーム待機中やゲーム中にブラウザの更新ボタンを押さないでください。タイトル画面に戻されます。</li>
+        </ol>
+      </div>
+      <h3>その他</h3>
+      <div>
+        ご要望・ご感想などありましたら、下記Twitterまで是非送ってください。</br>
+        バグなどを発見した場合も教えてくださると助かります。</br>
+        </br>
+        Developer: Fukky</br>
+        Twitterアカウント: <a href="https://twitter.com/Fukky__" target="_blank">@Fukky__</a>
+        </br>
+        </br>
+        アップデートや修正情報などはTwitterでお知らせいたします(ハッシュタグ: #the_game_online)
+      </div>
+    </div>
+    <div class="btnSpace">
+      <a class="box btn btn-outline-dark btn-lg btn-block" href="/index" role="button">タイトル画面に戻る</a>
+    </div>
+  </body>
+</html>
+<style>
+  body {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+  }
+  .titleSpace {
+    position: relative;
+    width: 100%;
+    height: 15%;
+  }
+  .titleSpace img {
+    width: 200px;
+    margin-left: 60%;
+  }
+  .titleSpace h1 {
+    position: absolute;
+    font-size: 40px;
+    font-family: 'ヒラギノ角ゴ Std W8', sans-serif;
+    text-align: center;
+    width: 500px;
+    top: 100px;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .titleSpace h2 {
+    position: absolute;
+    font-size: 30px;
+    font-family: 'ヒラギノ角ゴ Std W8', sans-serif;
+    text-align: center;
+    width: 500px;
+    top: 170px;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .description {
+    margin-top: 50px;
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+  .description h3 {
+    font-size: 25px;
+    font-family: 'ヒラギノ角ゴ Std W8', sans-serif;
+  }
+  .description div {
+    font-size: 15px;
+    font-family: 'sans-serif';
+    margin-bottom: 40px;
+  }
+  .btnSpace {
+    margin-top: 60px;
+    margin-left: 30vw;
+    margin-right: 30vw;
+  }
+</style>
